@@ -1,47 +1,25 @@
 # 🎬 IMDB Movie Analysis Project
 
-An end-to-end IMDB movie data analysis project that demonstrates data cleaning, validation, duplicate handling, SQL database management, Python data analysis, Matplotlib visualization, and analytical reporting.
+An end-to-end IMDB Movie Data Analysis project using Python, Pandas, NumPy, MySQL, SQL, and Matplotlib/Seaborn.
+
+The project covers data cleaning and preprocessing, duplicate handling, missing-value treatment, MySQL database storage, SQL analytics, Python-based analysis, and data visualization.
 
 ---
 
-## 📌 Project Overview
-
-This project analyzes IMDB movie data containing information such as movie titles, release years, ratings, genres, directors, actors, budgets, and gross income.
-
-The project follows an end-to-end data pipeline:
-
-Raw CSV Data  
-↓  
-Data Profiling  
-↓  
-Data Cleaning  
-↓  
-Data Validation  
-↓  
-MySQL Database  
-↓  
-SQL Analysis  
-↓  
-Python + Pandas  
-↓  
-Matplotlib Visualization  
-↓  
-Key Findings & Recommendations
-
----
-
-## 🎯 Objectives
+## 🎯 Project Objectives
 
 - Clean and preprocess the raw IMDB movie dataset
-- Identify and handle missing values
+- Handle missing values according to defined business rules
 - Identify and remove duplicate movie records
-- Apply defined business rules for duplicate handling
-- Store cleaned data in MySQL
+- Apply business rules for duplicate movie selection
+- Generate a unique `movie_id` for each movie
+- Store the cleaned movie data in MySQL
 - Perform analytical queries using SQL
-- Retrieve and analyze data using Python and Pandas
-- Create visualizations using Matplotlib
-- Identify key findings from the analysis
-- Provide recommendations based on the analysis
+- Retrieve SQL results into Pandas DataFrames
+- Analyze movie ratings, genres, directors, budgets, and gross income
+- Create visualizations using Matplotlib and Seaborn
+- Identify meaningful insights from the analysis
+- Provide conclusions and recommendations based on the analysis
 
 ---
 
@@ -49,139 +27,45 @@ Key Findings & Recommendations
 
 | Technology | Purpose |
 |------------|---------|
-| Python | Data processing and analysis |
-| Pandas | Data cleaning and DataFrames |
+| Python | Data cleaning and analysis |
+| Pandas | Data preprocessing and DataFrames |
 | NumPy | Numerical operations |
-| MySQL | Structured data storage |
+| MySQL | Database storage and management |
 | SQL | Data analysis and querying |
-| mysql-connector-python | Python-MySQL connection |
+| mysql-connector-python | Python–MySQL connection |
 | Matplotlib | Data visualization |
+| Seaborn | Statistical visualization |
 | Google Colab | Development environment |
 | Git | Version control |
-| GitHub | Repository hosting |
+| GitHub | Project repository |
 
 ---
 
-## 📂 Project Structure
+## 📊 Dataset
 
-IMDB-MOVIE-ANALYSIS/
-│
-├── data/
-│   ├── raw/
-│   │   └── imdb_movies.csv
-│   └── cleaned/
-│       └── cleaned_imdb_movies.csv
-│
-├── sql/
-│   └── analysis_queries.sql
-│
-├── notebooks/
-│   └── IMDB_Movie_Analysis.ipynb
-│
-├── visualizations/
-│   ├── rating_distribution.png
-│   ├── genre_analysis.png
-│   └── top_grossing_movies.png
-│
-├── README.md
-├── requirements.txt
-└── .gitignore
+The project uses an IMDB movie dataset containing movie-related information such as:
+
+- Movie title
+- Genre
+- Rating
+- Budget
+- Gross income
+- Director
+- Lead actor
+- Release year
+- Movie ID
+
+The raw dataset contains **5,500 movie records and 9 columns**.
 
 ---
 
-## 🧹 Data Cleaning
+## 🧹 Data Cleaning and Preprocessing
 
 The dataset was cleaned using defined business rules.
 
-### Duplicate Handling
+### BR-01: Duplicate Movie Handling
 
-A movie is considered a duplicate when:
+A movie is considered a duplicate when the following combination is repeated:
 
-- `title`
-- `release_year`
-
-are repeated.
-
-The duplicate record with the **highest rating** is retained.
-
-If ratings are equal, the record with the **highest gross** is retained.
-
----
-
-## 🔍 Data Analysis
-
-The project performs analysis such as:
-
-- Top-rated movies
-- Top-grossing movies
-- Movie ratings distribution
-- Genre-wise analysis
-- Year-wise movie trends
-- Director performance
-- Gross income analysis
-- Movie budget analysis
-
----
-
-## 📊 Data Visualization
-
-Matplotlib is used to create visualizations for:
-
-- Rating distribution
-- Top-grossing movies
-- Genre performance
-- Year-wise trends
-- Other analytical findings
-
----
-
-## 🗄️ MySQL Analysis
-
-The cleaned dataset is loaded into MySQL and SQL queries are used to perform analytical operations such as:
-
-- Aggregations
-- Filtering
-- Sorting
-- GROUP BY analysis
-- JOIN operations
-- Ranking
-- Top-N analysis
-
----
-
-## 📈 Key Findings
-
-The analysis identifies important patterns in:
-
-- Movie ratings
-- Gross income
-- Movie genres
-- Release years
-- Directors
-- Movie performance
-
----
-
-## 💡 Recommendations
-
-Based on the analysis, recommendations are provided regarding:
-
-- High-performing movie genres
-- Rating and audience preferences
-- Revenue-generating movies
-- Trends across release years
-- Factors associated with movie performance
-
----
-
-## 🏁 Conclusion
-
-This project demonstrates an end-to-end data analytics workflow using **Python, Pandas, NumPy, MySQL, SQL, and Matplotlib**.
-
-It covers the complete process from raw data cleaning and validation to database management, SQL analysis, visualization, and business insights.
-
----
-
-## 👨‍💻 Author
-
-**Rakesh Akurathi**
+```text
+title + release_year
